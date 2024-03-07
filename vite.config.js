@@ -8,7 +8,8 @@ export default defineConfig({
     resolve: {
         alias: [
             { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
-            { find: '@utils', replacement: fileURLToPath(new URL('./src/utils', import.meta.url)) }
+            { find: '@utils', replacement: fileURLToPath(new URL('./src/utils', import.meta.url)) },
+            { find: '@components', replacement: fileURLToPath(new URL('./src/components', import.meta.url)) }
         ]
     }
 });
