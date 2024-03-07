@@ -9,7 +9,8 @@ export default defineConfig({
         alias: [
             { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
             { find: '@utils', replacement: fileURLToPath(new URL('./src/utils', import.meta.url)) },
-            { find: '@components', replacement: fileURLToPath(new URL('./src/components', import.meta.url)) }
+            { find: '@components', replacement: fileURLToPath(new URL('./src/components', import.meta.url)) },
+            { find: '@public', replacement: fileURLToPath(new URL('./public', import.meta.url)) }
         ]
     }
 });
