@@ -4,8 +4,10 @@ import logo from '@public/TonysikLogoWhite.png';
 const Login = () => {
     return (
         <Container>
-            <img src={logo} alt="Tonysik Logo" />
-            <button>Connexion</button>
+            <LogoContainer>
+                <img src={logo} alt="Tonysik Logo" />
+            </LogoContainer>
+            <Button>Connexion</Button>
         </Container>
     );
 };
@@ -26,7 +28,14 @@ img {
     max-width: 100%; /* Empêche l'image de dépasser la largeur de son conteneur */
     max-height: 20vh; /* Empêche l'image de dépasser la hauteur de son conteneur */
 }
-button {
+`;
+
+const LogoContainer = styled.div`
+    margin-left: 2rem;
+    margin-right: 2rem;
+`;
+
+const Button = styled.button`
     padding: 1rem 5rem;
     border-radius: 5rem;
     background: black;
@@ -34,7 +43,12 @@ button {
     border: none;
     font-size: 1.4rem;
     cursor: pointer;
-}
+    transition: box-shadow 0.5s ease;
+    
+    &:hover {
+        box-shadow: 0 0 0.8rem white;
+        transition: box-shadow 0.5s ease;
+    }
 `;
 
 export default Login;
