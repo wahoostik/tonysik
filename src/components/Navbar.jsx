@@ -1,7 +1,13 @@
+import styled from 'styled-components';
+
 const Navbar = () => {
     return (
-        <div>Navbar</div>
+        <Container>Navbar</Container>
     );
 };
+
+const Container = styled.div`
+    color: white;
+`;
 
 export default Navbar;

@@ -1,7 +1,13 @@
+import styled from 'styled-components';
+
 const Body = () => {
     return (
-        <div>Body</div>
+        <Container>Body</Container>
     );
 };
+
+const Container = styled.div`
+    color: white;
+`;
 
 export default Body;
