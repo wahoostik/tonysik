@@ -2,12 +2,31 @@ import styled from 'styled-components';
 import logo from '@public/TonysikLogoWhite.png';
 
 const Login = () => {
+
+    const handleClick = () => {
+        // Autorisations de Spotify
+        const clientId = import.meta.env.VITE_CLIENT_ID;
+        const redirectUrl = import.meta.env.VITE_REDIRECT_URL;
+        const apiUrl = import.meta.env.VITE_API_URL;
+        const scope = [
+            'user-read-private',
+            'user-read-email',
+            'user-modify-playback-state',
+            'user-read-playback-state',
+            'user-read-currently-playing',
+            'user-read-recently-played',
+            'user-top-read',
+        ];
+        // L'application doit être redirigé vers cet URL avec les infos du client ID, de l'API Spotify, de l'URL de redirection et des Scopes (séparé par des espaces)
+        window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scope.join(' ')}&response_type=token&show_dialog=true`;
+    };
+
     return (
         <Container>
             <LogoContainer>
                 <img src={logo} alt="Tonysik Logo" />
             </LogoContainer>
-            <Button>Connexion</Button>
+            <Button onClick={handleClick}>Connexion</Button>
         </Container>
     );
 };
