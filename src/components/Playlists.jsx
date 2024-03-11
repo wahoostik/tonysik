@@ -47,13 +47,16 @@ const Playlists = () => {
 };
 
 const Container = styled.div`
-    color: white;
+    color: white;*color: #b3b3b3;
+    height: 100vh;
+    overflow: auto;
     ul {
         list-style-type: none;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         padding: 1rem;
+        max-height: 100%;
         li {
             display: flex;
             align-items: center;
