@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import logo from '@public/TonysikLogoWhite.png';
+import smallLogo from '@public/TonysikLogoIconeWhite.png';
 import { IoLibrary } from 'react-icons/io5';
 import { MdHomeFilled, MdSearch } from 'react-icons/md';
+import Playlists from '@components/Playlists';
 
 const Sidebar = () => {
     return (
@@ -12,19 +14,20 @@ const Sidebar = () => {
                 </div>
                 <ul>
                     <li>
-                        <MdHomeFilled />
+                        <Home />
                         <span>Accueil</span>
                     </li>
                     <li>
-                        <MdSearch />
+                        <Search />
                         <span>Rechercher</span>
                     </li>
                     <li>
-                        <IoLibrary />
+                        <Library />
                         <span>Ma Librairie</span>
                     </li>
                 </ul>
             </div>
+            <Playlists />
         </Container>
     );
 };
@@ -36,6 +39,7 @@ const Container = styled.div`
     flex-direction: column;
     height: 100%;
     width: 100%;
+    // min-width: 8rem;
 .top__links {
     display: flex;
     flex-direction: column;
@@ -64,7 +68,46 @@ img {
             }
         }
     }
+
+    @media (max-width: 1000px) {
+        li span {
+                display: none; /* Masquer les spans lorsque l'écran est trop petit */
+        }
+        li {
+            justify-content: center; /* Alignement horizontal au centre */
+        }
+        .logo img {
+            content: url(${smallLogo}); // Utilisez le nouveau logo lorsque l'écran est trop petit
+            max-inline-size: 50%;
+            min-inline-size: 45%;
+            block-size: auto;
+        }
+    }
 }
+`;
+
+const Library = styled(IoLibrary)`
+    font-size: 1rem;
+
+    @media (max-width: 1000px) {
+            font-size: 1.5rem;
+    }
+`;
+
+const Search = styled(MdSearch)`
+    font-size: 1rem;
+
+    @media (max-width: 1000px) {
+            font-size: 1.5rem;
+    }
+`;
+
+const Home = styled(MdHomeFilled)`
+    font-size: 1rem;
+
+    @media (max-width: 1000px) {
+            font-size: 1.5rem;
+    }
 `;
 
 export default Sidebar;
