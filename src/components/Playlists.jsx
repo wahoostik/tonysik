@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Playlists = () => {
 
-    const [{ token, playlists }, dispatch] = useStateProvider();
+    const [{ token, dispatch }] = useStateProvider();
 
     useEffect(() => {
 
@@ -18,7 +18,12 @@ const Playlists = () => {
                     },
                 }
             );
-            console.log(response);
+            // console.log(response);
+            const { items } = response.data;
+            const playlists = items.map(({ name, id }) => {
+                return { name, id };
+            });
+            console.log(playlists);
         };
         getPlaylistData();
         
