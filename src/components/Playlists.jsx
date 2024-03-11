@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { useStateProvider } from '@utils/UseStateProvider';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { reducerCases } from '../utils/Constants';
 
 const Playlists = () => {
 
-    const [{ token, dispatch }] = useStateProvider();
+    const [{ token, playlists }, dispatch] = useStateProvider();
 
     useEffect(() => {
 
@@ -24,18 +25,54 @@ const Playlists = () => {
                 return { name, id };
             });
             console.log(playlists);
+            dispatch({ type: reducerCases.SET_PLAYLISTS, playlists });
         };
         getPlaylistData();
         
     }, [ token, dispatch ]);
 
     return (
-        <Container>Playlists</Container>
+        <Container>
+            <ul>
+                {
+                    playlists.map(({name, id}) => {
+                        return (
+                            <li key={id}>{name}</li>
+                        );
+                    })
+                }
+            </ ul>
+        </Container>
     );
 };
 
 const Container = styled.div`
     color: white;
+    ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap; /* Empêche le texte de passer à la ligne */
+            overflow: hidden; /* Cache le texte dépassant */
+            text-overflow: ellipsis; /* Affiche "..." lorsque le texte déborde */
+            &:hover {
+                animation: scrollText 5s linear infinite; /* Animation de défilement horizontal */
+            }
+        }
+    }
+
+    @keyframes scrollText {
+        0% { margin-left: 0; }
+        100% { margin-left: -100%; }
+    }
 `;
 
 export default Playlists;

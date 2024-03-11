@@ -21,13 +21,15 @@ const Sidebar = () => {
                         <Search />
                         <span>Rechercher</span>
                     </li>
-                    <li>
-                        <Library />
-                        <span>Ma Librairie</span>
-                    </li>
+                    <div>
+                        <li>
+                            <Library />
+                            <span>Mes Librairies</span>
+                        </li>
+                        <Playlists />
+                    </div>
                 </ul>
             </div>
-            <Playlists />
         </Container>
     );
 };
@@ -39,6 +41,7 @@ const Container = styled.div`
     flex-direction: column;
     height: 100%;
     width: 100%;
+    font-weight: 500;
     // min-width: 8rem;
 .top__links {
     display: flex;
